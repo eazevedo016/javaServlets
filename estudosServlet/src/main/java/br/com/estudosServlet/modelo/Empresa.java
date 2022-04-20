@@ -1,4 +1,4 @@
-package br.com.estudosServlet;
+package br.com.estudosServlet.modelo;
 
 import java.util.Date;
 
