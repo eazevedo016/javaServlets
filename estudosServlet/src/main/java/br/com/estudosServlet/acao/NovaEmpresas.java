@@ -1,27 +1,20 @@
-package br.com.estudosServlet;
+package br.com.estudosServlet.acao;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.estudosServlet.modelo.Banco;
 import br.com.estudosServlet.modelo.Empresa;
 
-
-//@WebServlet("/novaEmpresa")
-public class NovaEmpresaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class NovaEmpresas {
 	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		//lendo os parametros da request
 		String nomeEmpresa = request.getParameter("nome");
@@ -44,10 +37,6 @@ public class NovaEmpresaServlet extends HttpServlet {
         banco.adiciona(empresa);
         
         response.sendRedirect("entrada?acao=ListaEmpresas");
+	}
 
-        //chamar o JPS
-//        RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas");
-//        request.setAttribute("empresa", empresa.getNome());
-//        rd.forward(request, response);
-    }
 }
