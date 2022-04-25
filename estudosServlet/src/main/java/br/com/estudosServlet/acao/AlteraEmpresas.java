@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.estudosServlet.modelo.Banco;
 import br.com.estudosServlet.modelo.Empresa;
 
-public class AlteraEmpresas {
+public class AlteraEmpresas implements Acao {
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		System.out.println("altera empresa");
 
@@ -28,6 +28,7 @@ public class AlteraEmpresas {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			dataAbertura = sdf.parse(paramDataEmpresa);
 		} catch (ParseException e) {
+			System.out.println("deu erro erro erro erro");
 			throw new ServletException(e);
 		}
 		
@@ -38,7 +39,8 @@ public class AlteraEmpresas {
 		empresa.setNome(nomeEmpresa);
 		empresa.setDataAbertura(dataAbertura);
 		
-		response.sendRedirect("entrada?acao=ListaEmpresas");
+		
+		return "redirect:entrada?acao=ListaEmpresas";
 	}
 
 }

@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.estudosServlet.modelo.Banco;
 import br.com.estudosServlet.modelo.Empresa;
 
-public class NovaEmpresas {
+public class NovaEmpresas implements Acao {
 	
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		
 		//lendo os parametros da request
 		String nomeEmpresa = request.getParameter("nome");
@@ -36,7 +36,7 @@ public class NovaEmpresas {
         Banco banco = new Banco();
         banco.adiciona(empresa);
         
-        response.sendRedirect("entrada?acao=ListaEmpresas");
+        return "redirect:entrada?acao=ListaEmpresas";
 	}
 
 }
